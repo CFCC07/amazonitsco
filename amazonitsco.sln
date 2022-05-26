@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonItsco_WindowsForm", "AmazonItsco_WindowsForm\AmazonItsco_WindowsForm.csproj", "{D0368151-9065-4D3F-B4A2-1279F78223AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonItsco_Logica_ClassLibrary", "AmazonItsco_Logica_ClassLibrary\AmazonItsco_Logica_ClassLibrary.csproj", "{D79DB694-6BB4-4776-81AA-1DB770006D59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonItsco_Data_ClassLibrary", "AmazonItsco_Data_ClassLibrary\AmazonItsco_Data_ClassLibrary.csproj", "{B1FA7359-E45F-4912-914C-5FA3EA239E1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0368151-9065-4D3F-B4A2-1279F78223AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0368151-9065-4D3F-B4A2-1279F78223AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0368151-9065-4D3F-B4A2-1279F78223AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0368151-9065-4D3F-B4A2-1279F78223AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D79DB694-6BB4-4776-81AA-1DB770006D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79DB694-6BB4-4776-81AA-1DB770006D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79DB694-6BB4-4776-81AA-1DB770006D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79DB694-6BB4-4776-81AA-1DB770006D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1FA7359-E45F-4912-914C-5FA3EA239E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1FA7359-E45F-4912-914C-5FA3EA239E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1FA7359-E45F-4912-914C-5FA3EA239E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1FA7359-E45F-4912-914C-5FA3EA239E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6B6CCFD-1392-4ED1-ABA0-06CB65D43F91}
+	EndGlobalSection
+EndGlobal

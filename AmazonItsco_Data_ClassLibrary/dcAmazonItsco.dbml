@@ -12,12 +12,20 @@
       <Association Name="Categoria_Producto" Member="Producto" ThisKey="cat_id" OtherKey="cat_id" Type="Producto" />
     </Type>
   </Table>
-  <Table Name="dbo.TipoPago" Member="TipoPago">
-    <Type Name="TipoPago">
-      <Column Name="tpa_id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tpa_descripcion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="tpa_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Association Name="TipoPago_Pago" Member="Pago" ThisKey="tpa_id" OtherKey="tpa_id" Type="Pago" />
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_correo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_clave" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="usu_edit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="usu_delete" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="prf_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="per_id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="per_dni" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Perfil_Usuario" Member="Perfil" ThisKey="prf_id" OtherKey="prf_id" Type="Perfil" IsForeignKey="true" />
+      <Association Name="Persona_Usuario" Member="Persona" ThisKey="per_id,per_dni" OtherKey="per_id,per_dni" Type="Persona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DetalleOrden" Member="DetalleOrden">
@@ -128,8 +136,8 @@
       <Column Name="ord_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ord_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ord_numero" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Association Name="TipoPago_Pago" Member="TipoPago" ThisKey="tpa_id" OtherKey="tpa_id" Type="TipoPago" IsForeignKey="true" />
       <Association Name="Orden_Pago" Member="Orden" ThisKey="ord_id,ord_fecha,ord_numero" OtherKey="ord_id,ord_fecha,ord_numero" Type="Orden" IsForeignKey="true" />
+      <Association Name="TipoPago_Pago" Member="TipoPago" ThisKey="tpa_id" OtherKey="tpa_id" Type="TipoPago" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Pais" Member="Pais">
@@ -139,6 +147,17 @@
       <Column Name="pai_prefijo" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Column Name="pai_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Association Name="Pais_Direcciones" Member="Direcciones" ThisKey="pai_id" OtherKey="pai_id" Type="Direcciones" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Perfil" Member="Perfil">
+    <Type Name="Perfil">
+      <Column Name="prf_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="prf_descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="prf_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="prf_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="prf_edit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="prf_delete" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Perfil_Usuario" Member="Usuario" ThisKey="prf_id" OtherKey="prf_id" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Persona" Member="Persona">
@@ -154,6 +173,7 @@
       <Column Name="per_edit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="per_delete" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="per_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Persona_Usuario" Member="Usuario" ThisKey="per_id,per_dni" OtherKey="per_id,per_dni" Type="Usuario" />
       <Association Name="Persona_Direcciones" Member="Direcciones" ThisKey="per_id,per_dni" OtherKey="per_id,per_dni" Type="Direcciones" />
     </Type>
   </Table>
@@ -173,6 +193,14 @@
       <Column Name="cat_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Producto_DetalleOrden" Member="DetalleOrden" ThisKey="pro_id,cat_id" OtherKey="pro_id,cat_id" Type="DetalleOrden" />
       <Association Name="Categoria_Producto" Member="Categoria" ThisKey="cat_id" OtherKey="cat_id" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoPago" Member="TipoPago">
+    <Type Name="TipoPago">
+      <Column Name="tpa_id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tpa_descripcion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tpa_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoPago_Pago" Member="Pago" ThisKey="tpa_id" OtherKey="tpa_id" Type="Pago" />
     </Type>
   </Table>
 </Database>

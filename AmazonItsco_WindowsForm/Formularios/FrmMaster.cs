@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AmazonItsco_WindowsForm
+namespace AmazonItsco_WindowsForm.Formularios
 {
-    public partial class Form1 : Form
+    public partial class FrmMaster : Form
     {
-        public Form1()
+        public FrmMaster()
         {
             InitializeComponent();
         }

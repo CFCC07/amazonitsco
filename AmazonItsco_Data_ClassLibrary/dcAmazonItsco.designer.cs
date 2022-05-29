@@ -33,9 +33,9 @@ namespace AmazonItsco_Data_ClassLibrary
     partial void InsertCategoria(Categoria instance);
     partial void UpdateCategoria(Categoria instance);
     partial void DeleteCategoria(Categoria instance);
-    partial void InsertTipoPago(TipoPago instance);
-    partial void UpdateTipoPago(TipoPago instance);
-    partial void DeleteTipoPago(TipoPago instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     partial void InsertDetalleOrden(DetalleOrden instance);
     partial void UpdateDetalleOrden(DetalleOrden instance);
     partial void DeleteDetalleOrden(DetalleOrden instance);
@@ -54,12 +54,18 @@ namespace AmazonItsco_Data_ClassLibrary
     partial void InsertPais(Pais instance);
     partial void UpdatePais(Pais instance);
     partial void DeletePais(Pais instance);
+    partial void InsertPerfil(Perfil instance);
+    partial void UpdatePerfil(Perfil instance);
+    partial void DeletePerfil(Perfil instance);
     partial void InsertPersona(Persona instance);
     partial void UpdatePersona(Persona instance);
     partial void DeletePersona(Persona instance);
     partial void InsertProducto(Producto instance);
     partial void UpdateProducto(Producto instance);
     partial void DeleteProducto(Producto instance);
+    partial void InsertTipoPago(TipoPago instance);
+    partial void UpdateTipoPago(TipoPago instance);
+    partial void DeleteTipoPago(TipoPago instance);
     #endregion
 		
 		public dcAmazonItscoDataContext() : 
@@ -100,11 +106,11 @@ namespace AmazonItsco_Data_ClassLibrary
 			}
 		}
 		
-		public System.Data.Linq.Table<TipoPago> TipoPago
+		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
-				return this.GetTable<TipoPago>();
+				return this.GetTable<Usuario>();
 			}
 		}
 		
@@ -156,6 +162,14 @@ namespace AmazonItsco_Data_ClassLibrary
 			}
 		}
 		
+		public System.Data.Linq.Table<Perfil> Perfil
+		{
+			get
+			{
+				return this.GetTable<Perfil>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Persona> Persona
 		{
 			get
@@ -169,6 +183,14 @@ namespace AmazonItsco_Data_ClassLibrary
 			get
 			{
 				return this.GetTable<Producto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TipoPago> TipoPago
+		{
+			get
+			{
+				return this.GetTable<TipoPago>();
 			}
 		}
 	}
@@ -407,108 +429,348 @@ namespace AmazonItsco_Data_ClassLibrary
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TipoPago")]
-	public partial class TipoPago : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private byte _tpa_id;
+		private int _usu_id;
 		
-		private string _tpa_descripcion;
+		private string _usu_correo;
 		
-		private char _tpa_status;
+		private string _usu_clave;
 		
-		private EntitySet<Pago> _Pago;
+		private char _usu_status;
+		
+		private System.DateTime _usu_add;
+		
+		private System.Nullable<System.DateTime> _usu_edit;
+		
+		private System.Nullable<System.DateTime> _usu_delete;
+		
+		private System.Nullable<int> _prf_id;
+		
+		private long _per_id;
+		
+		private string _per_dni;
+		
+		private EntityRef<Perfil> _Perfil;
+		
+		private EntityRef<Persona> _Persona;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Ontpa_idChanging(byte value);
-    partial void Ontpa_idChanged();
-    partial void Ontpa_descripcionChanging(string value);
-    partial void Ontpa_descripcionChanged();
-    partial void Ontpa_statusChanging(char value);
-    partial void Ontpa_statusChanged();
+    partial void Onusu_idChanging(int value);
+    partial void Onusu_idChanged();
+    partial void Onusu_correoChanging(string value);
+    partial void Onusu_correoChanged();
+    partial void Onusu_claveChanging(string value);
+    partial void Onusu_claveChanged();
+    partial void Onusu_statusChanging(char value);
+    partial void Onusu_statusChanged();
+    partial void Onusu_addChanging(System.DateTime value);
+    partial void Onusu_addChanged();
+    partial void Onusu_editChanging(System.Nullable<System.DateTime> value);
+    partial void Onusu_editChanged();
+    partial void Onusu_deleteChanging(System.Nullable<System.DateTime> value);
+    partial void Onusu_deleteChanged();
+    partial void Onprf_idChanging(System.Nullable<int> value);
+    partial void Onprf_idChanged();
+    partial void Onper_idChanging(long value);
+    partial void Onper_idChanged();
+    partial void Onper_dniChanging(string value);
+    partial void Onper_dniChanged();
     #endregion
 		
-		public TipoPago()
+		public Usuario()
 		{
-			this._Pago = new EntitySet<Pago>(new Action<Pago>(this.attach_Pago), new Action<Pago>(this.detach_Pago));
+			this._Perfil = default(EntityRef<Perfil>);
+			this._Persona = default(EntityRef<Persona>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_id", AutoSync=AutoSync.OnInsert, DbType="TinyInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public byte tpa_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int usu_id
 		{
 			get
 			{
-				return this._tpa_id;
+				return this._usu_id;
 			}
 			set
 			{
-				if ((this._tpa_id != value))
+				if ((this._usu_id != value))
 				{
-					this.Ontpa_idChanging(value);
+					this.Onusu_idChanging(value);
 					this.SendPropertyChanging();
-					this._tpa_id = value;
-					this.SendPropertyChanged("tpa_id");
-					this.Ontpa_idChanged();
+					this._usu_id = value;
+					this.SendPropertyChanged("usu_id");
+					this.Onusu_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_descripcion", DbType="NVarChar(100)")]
-		public string tpa_descripcion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_correo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string usu_correo
 		{
 			get
 			{
-				return this._tpa_descripcion;
+				return this._usu_correo;
 			}
 			set
 			{
-				if ((this._tpa_descripcion != value))
+				if ((this._usu_correo != value))
 				{
-					this.Ontpa_descripcionChanging(value);
+					this.Onusu_correoChanging(value);
 					this.SendPropertyChanging();
-					this._tpa_descripcion = value;
-					this.SendPropertyChanged("tpa_descripcion");
-					this.Ontpa_descripcionChanged();
+					this._usu_correo = value;
+					this.SendPropertyChanged("usu_correo");
+					this.Onusu_correoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_status", DbType="Char(1) NOT NULL")]
-		public char tpa_status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_clave", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string usu_clave
 		{
 			get
 			{
-				return this._tpa_status;
+				return this._usu_clave;
 			}
 			set
 			{
-				if ((this._tpa_status != value))
+				if ((this._usu_clave != value))
 				{
-					this.Ontpa_statusChanging(value);
+					this.Onusu_claveChanging(value);
 					this.SendPropertyChanging();
-					this._tpa_status = value;
-					this.SendPropertyChanged("tpa_status");
-					this.Ontpa_statusChanged();
+					this._usu_clave = value;
+					this.SendPropertyChanged("usu_clave");
+					this.Onusu_claveChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoPago_Pago", Storage="_Pago", ThisKey="tpa_id", OtherKey="tpa_id")]
-		public EntitySet<Pago> Pago
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_status", DbType="Char(1) NOT NULL")]
+		public char usu_status
 		{
 			get
 			{
-				return this._Pago;
+				return this._usu_status;
 			}
 			set
 			{
-				this._Pago.Assign(value);
+				if ((this._usu_status != value))
+				{
+					this.Onusu_statusChanging(value);
+					this.SendPropertyChanging();
+					this._usu_status = value;
+					this.SendPropertyChanged("usu_status");
+					this.Onusu_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_add", DbType="DateTime NOT NULL")]
+		public System.DateTime usu_add
+		{
+			get
+			{
+				return this._usu_add;
+			}
+			set
+			{
+				if ((this._usu_add != value))
+				{
+					this.Onusu_addChanging(value);
+					this.SendPropertyChanging();
+					this._usu_add = value;
+					this.SendPropertyChanged("usu_add");
+					this.Onusu_addChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_edit", DbType="DateTime")]
+		public System.Nullable<System.DateTime> usu_edit
+		{
+			get
+			{
+				return this._usu_edit;
+			}
+			set
+			{
+				if ((this._usu_edit != value))
+				{
+					this.Onusu_editChanging(value);
+					this.SendPropertyChanging();
+					this._usu_edit = value;
+					this.SendPropertyChanged("usu_edit");
+					this.Onusu_editChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_delete", DbType="DateTime")]
+		public System.Nullable<System.DateTime> usu_delete
+		{
+			get
+			{
+				return this._usu_delete;
+			}
+			set
+			{
+				if ((this._usu_delete != value))
+				{
+					this.Onusu_deleteChanging(value);
+					this.SendPropertyChanging();
+					this._usu_delete = value;
+					this.SendPropertyChanged("usu_delete");
+					this.Onusu_deleteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_id", DbType="Int")]
+		public System.Nullable<int> prf_id
+		{
+			get
+			{
+				return this._prf_id;
+			}
+			set
+			{
+				if ((this._prf_id != value))
+				{
+					if (this._Perfil.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onprf_idChanging(value);
+					this.SendPropertyChanging();
+					this._prf_id = value;
+					this.SendPropertyChanged("prf_id");
+					this.Onprf_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_id", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long per_id
+		{
+			get
+			{
+				return this._per_id;
+			}
+			set
+			{
+				if ((this._per_id != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onper_idChanging(value);
+					this.SendPropertyChanging();
+					this._per_id = value;
+					this.SendPropertyChanged("per_id");
+					this.Onper_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_dni", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string per_dni
+		{
+			get
+			{
+				return this._per_dni;
+			}
+			set
+			{
+				if ((this._per_dni != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onper_dniChanging(value);
+					this.SendPropertyChanging();
+					this._per_dni = value;
+					this.SendPropertyChanged("per_dni");
+					this.Onper_dniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Perfil_Usuario", Storage="_Perfil", ThisKey="prf_id", OtherKey="prf_id", IsForeignKey=true)]
+		public Perfil Perfil
+		{
+			get
+			{
+				return this._Perfil.Entity;
+			}
+			set
+			{
+				Perfil previousValue = this._Perfil.Entity;
+				if (((previousValue != value) 
+							|| (this._Perfil.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Perfil.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Perfil.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._prf_id = value.prf_id;
+					}
+					else
+					{
+						this._prf_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Perfil");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="per_id,per_dni", OtherKey="per_id,per_dni", IsForeignKey=true)]
+		public Persona Persona
+		{
+			get
+			{
+				return this._Persona.Entity;
+			}
+			set
+			{
+				Persona previousValue = this._Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Persona.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Persona.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._per_id = value.per_id;
+						this._per_dni = value.per_dni;
+					}
+					else
+					{
+						this._per_id = default(long);
+						this._per_dni = default(string);
+					}
+					this.SendPropertyChanged("Persona");
+				}
 			}
 		}
 		
@@ -530,18 +792,6 @@ namespace AmazonItsco_Data_ClassLibrary
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Pago(Pago entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoPago = this;
-		}
-		
-		private void detach_Pago(Pago entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoPago = null;
 		}
 	}
 	
@@ -2759,9 +3009,9 @@ namespace AmazonItsco_Data_ClassLibrary
 		
 		private string _ord_numero;
 		
-		private EntityRef<TipoPago> _TipoPago;
-		
 		private EntityRef<Orden> _Orden;
+		
+		private EntityRef<TipoPago> _TipoPago;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -2795,8 +3045,8 @@ namespace AmazonItsco_Data_ClassLibrary
 		
 		public Pago()
 		{
-			this._TipoPago = default(EntityRef<TipoPago>);
 			this._Orden = default(EntityRef<Orden>);
+			this._TipoPago = default(EntityRef<TipoPago>);
 			OnCreated();
 		}
 		
@@ -3056,40 +3306,6 @@ namespace AmazonItsco_Data_ClassLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoPago_Pago", Storage="_TipoPago", ThisKey="tpa_id", OtherKey="tpa_id", IsForeignKey=true)]
-		public TipoPago TipoPago
-		{
-			get
-			{
-				return this._TipoPago.Entity;
-			}
-			set
-			{
-				TipoPago previousValue = this._TipoPago.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoPago.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoPago.Entity = null;
-						previousValue.Pago.Remove(this);
-					}
-					this._TipoPago.Entity = value;
-					if ((value != null))
-					{
-						value.Pago.Add(this);
-						this._tpa_id = value.tpa_id;
-					}
-					else
-					{
-						this._tpa_id = default(Nullable<byte>);
-					}
-					this.SendPropertyChanged("TipoPago");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Orden_Pago", Storage="_Orden", ThisKey="ord_id,ord_fecha,ord_numero", OtherKey="ord_id,ord_fecha,ord_numero", IsForeignKey=true)]
 		public Orden Orden
 		{
@@ -3124,6 +3340,40 @@ namespace AmazonItsco_Data_ClassLibrary
 						this._ord_numero = default(string);
 					}
 					this.SendPropertyChanged("Orden");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoPago_Pago", Storage="_TipoPago", ThisKey="tpa_id", OtherKey="tpa_id", IsForeignKey=true)]
+		public TipoPago TipoPago
+		{
+			get
+			{
+				return this._TipoPago.Entity;
+			}
+			set
+			{
+				TipoPago previousValue = this._TipoPago.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoPago.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoPago.Entity = null;
+						previousValue.Pago.Remove(this);
+					}
+					this._TipoPago.Entity = value;
+					if ((value != null))
+					{
+						value.Pago.Add(this);
+						this._tpa_id = value.tpa_id;
+					}
+					else
+					{
+						this._tpa_id = default(Nullable<byte>);
+					}
+					this.SendPropertyChanged("TipoPago");
 				}
 			}
 		}
@@ -3311,6 +3561,216 @@ namespace AmazonItsco_Data_ClassLibrary
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Perfil")]
+	public partial class Perfil : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _prf_id;
+		
+		private string _prf_descripcion;
+		
+		private char _prf_status;
+		
+		private System.DateTime _prf_add;
+		
+		private System.Nullable<System.DateTime> _prf_edit;
+		
+		private System.Nullable<System.DateTime> _prf_delete;
+		
+		private EntitySet<Usuario> _Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onprf_idChanging(int value);
+    partial void Onprf_idChanged();
+    partial void Onprf_descripcionChanging(string value);
+    partial void Onprf_descripcionChanged();
+    partial void Onprf_statusChanging(char value);
+    partial void Onprf_statusChanged();
+    partial void Onprf_addChanging(System.DateTime value);
+    partial void Onprf_addChanged();
+    partial void Onprf_editChanging(System.Nullable<System.DateTime> value);
+    partial void Onprf_editChanged();
+    partial void Onprf_deleteChanging(System.Nullable<System.DateTime> value);
+    partial void Onprf_deleteChanged();
+    #endregion
+		
+		public Perfil()
+		{
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int prf_id
+		{
+			get
+			{
+				return this._prf_id;
+			}
+			set
+			{
+				if ((this._prf_id != value))
+				{
+					this.Onprf_idChanging(value);
+					this.SendPropertyChanging();
+					this._prf_id = value;
+					this.SendPropertyChanged("prf_id");
+					this.Onprf_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_descripcion", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string prf_descripcion
+		{
+			get
+			{
+				return this._prf_descripcion;
+			}
+			set
+			{
+				if ((this._prf_descripcion != value))
+				{
+					this.Onprf_descripcionChanging(value);
+					this.SendPropertyChanging();
+					this._prf_descripcion = value;
+					this.SendPropertyChanged("prf_descripcion");
+					this.Onprf_descripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_status", DbType="Char(1) NOT NULL")]
+		public char prf_status
+		{
+			get
+			{
+				return this._prf_status;
+			}
+			set
+			{
+				if ((this._prf_status != value))
+				{
+					this.Onprf_statusChanging(value);
+					this.SendPropertyChanging();
+					this._prf_status = value;
+					this.SendPropertyChanged("prf_status");
+					this.Onprf_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_add", DbType="DateTime NOT NULL")]
+		public System.DateTime prf_add
+		{
+			get
+			{
+				return this._prf_add;
+			}
+			set
+			{
+				if ((this._prf_add != value))
+				{
+					this.Onprf_addChanging(value);
+					this.SendPropertyChanging();
+					this._prf_add = value;
+					this.SendPropertyChanged("prf_add");
+					this.Onprf_addChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_edit", DbType="DateTime")]
+		public System.Nullable<System.DateTime> prf_edit
+		{
+			get
+			{
+				return this._prf_edit;
+			}
+			set
+			{
+				if ((this._prf_edit != value))
+				{
+					this.Onprf_editChanging(value);
+					this.SendPropertyChanging();
+					this._prf_edit = value;
+					this.SendPropertyChanged("prf_edit");
+					this.Onprf_editChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prf_delete", DbType="DateTime")]
+		public System.Nullable<System.DateTime> prf_delete
+		{
+			get
+			{
+				return this._prf_delete;
+			}
+			set
+			{
+				if ((this._prf_delete != value))
+				{
+					this.Onprf_deleteChanging(value);
+					this.SendPropertyChanging();
+					this._prf_delete = value;
+					this.SendPropertyChanged("prf_delete");
+					this.Onprf_deleteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Perfil_Usuario", Storage="_Usuario", ThisKey="prf_id", OtherKey="prf_id")]
+		public EntitySet<Usuario> Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				this._Usuario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Perfil = this;
+		}
+		
+		private void detach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Perfil = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Persona")]
 	public partial class Persona : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3338,6 +3798,8 @@ namespace AmazonItsco_Data_ClassLibrary
 		private System.Nullable<System.DateTime> _per_delete;
 		
 		private char _per_status;
+		
+		private EntitySet<Usuario> _Usuario;
 		
 		private EntitySet<Direcciones> _Direcciones;
 		
@@ -3371,6 +3833,7 @@ namespace AmazonItsco_Data_ClassLibrary
 		
 		public Persona()
 		{
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			this._Direcciones = new EntitySet<Direcciones>(new Action<Direcciones>(this.attach_Direcciones), new Action<Direcciones>(this.detach_Direcciones));
 			OnCreated();
 		}
@@ -3595,6 +4058,19 @@ namespace AmazonItsco_Data_ClassLibrary
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Usuario", ThisKey="per_id,per_dni", OtherKey="per_id,per_dni")]
+		public EntitySet<Usuario> Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				this._Usuario.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Direcciones", Storage="_Direcciones", ThisKey="per_id,per_dni", OtherKey="per_id,per_dni")]
 		public EntitySet<Direcciones> Direcciones
 		{
@@ -3626,6 +4102,18 @@ namespace AmazonItsco_Data_ClassLibrary
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persona = this;
+		}
+		
+		private void detach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persona = null;
 		}
 		
 		private void attach_Direcciones(Direcciones entity)
@@ -4033,6 +4521,144 @@ namespace AmazonItsco_Data_ClassLibrary
 		{
 			this.SendPropertyChanging();
 			entity.Producto = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TipoPago")]
+	public partial class TipoPago : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private byte _tpa_id;
+		
+		private string _tpa_descripcion;
+		
+		private char _tpa_status;
+		
+		private EntitySet<Pago> _Pago;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ontpa_idChanging(byte value);
+    partial void Ontpa_idChanged();
+    partial void Ontpa_descripcionChanging(string value);
+    partial void Ontpa_descripcionChanged();
+    partial void Ontpa_statusChanging(char value);
+    partial void Ontpa_statusChanged();
+    #endregion
+		
+		public TipoPago()
+		{
+			this._Pago = new EntitySet<Pago>(new Action<Pago>(this.attach_Pago), new Action<Pago>(this.detach_Pago));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_id", AutoSync=AutoSync.OnInsert, DbType="TinyInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public byte tpa_id
+		{
+			get
+			{
+				return this._tpa_id;
+			}
+			set
+			{
+				if ((this._tpa_id != value))
+				{
+					this.Ontpa_idChanging(value);
+					this.SendPropertyChanging();
+					this._tpa_id = value;
+					this.SendPropertyChanged("tpa_id");
+					this.Ontpa_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_descripcion", DbType="NVarChar(100)")]
+		public string tpa_descripcion
+		{
+			get
+			{
+				return this._tpa_descripcion;
+			}
+			set
+			{
+				if ((this._tpa_descripcion != value))
+				{
+					this.Ontpa_descripcionChanging(value);
+					this.SendPropertyChanging();
+					this._tpa_descripcion = value;
+					this.SendPropertyChanged("tpa_descripcion");
+					this.Ontpa_descripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tpa_status", DbType="Char(1) NOT NULL")]
+		public char tpa_status
+		{
+			get
+			{
+				return this._tpa_status;
+			}
+			set
+			{
+				if ((this._tpa_status != value))
+				{
+					this.Ontpa_statusChanging(value);
+					this.SendPropertyChanging();
+					this._tpa_status = value;
+					this.SendPropertyChanged("tpa_status");
+					this.Ontpa_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoPago_Pago", Storage="_Pago", ThisKey="tpa_id", OtherKey="tpa_id")]
+		public EntitySet<Pago> Pago
+		{
+			get
+			{
+				return this._Pago;
+			}
+			set
+			{
+				this._Pago.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Pago(Pago entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoPago = this;
+		}
+		
+		private void detach_Pago(Pago entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoPago = null;
 		}
 	}
 }

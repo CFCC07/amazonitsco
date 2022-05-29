@@ -22,7 +22,7 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
             catch (Exception ex)
             {
 
-                throw new ArgumentException("Error al obtener data "+ ex.Message);
+                throw new ArgumentException("Error al obtener data ");
             }
 
         }
@@ -41,7 +41,7 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
             catch (Exception ex)
             {
 
-                throw new ArgumentException("Error al obtener data " + ex.Message);
+                throw new ArgumentException("Error al obtener data ");
             }
 
         }

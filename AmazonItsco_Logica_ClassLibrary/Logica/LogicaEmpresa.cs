@@ -8,12 +8,11 @@ using System.Data.Linq;
 
 namespace AmazonItsco_Logica_ClassLibrary.Logica
 {
-    class LogicaEmpresa
+    public class LogicaEmpresa
     {
         public dcAmazonItscoDataContext dc = new dcAmazonItscoDataContext();
 
         public List<Empresa> getAllEmpresa() {
-
 
             try
             {
@@ -23,9 +22,12 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
             catch (Exception ex)
             {
 
-                throw new ArgumentException("Error al obtener datos");
+                throw new ArgumentException("Error al obtener data "+ ex.Message);
             }
+
         }
+
+
 
         public List<Empresa> getAllEmpresaById(int idEmpresa)
         {
@@ -39,30 +41,33 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
             catch (Exception ex)
             {
 
-                throw new ArgumentException("Error al obtener datos");
+                throw new ArgumentException("Error al obtener data " + ex.Message);
             }
+
         }
 
 
 
         public bool save(Empresa empresa)
-
         {
-
             try
             {
                 empresa.emp_status = 'A';
+
                 dc.Empresa.InsertOnSubmit(empresa);
                 dc.SubmitChanges();
+
                 return true;
             }
+
+
             catch (Exception ex)
             {
 
-                throw new ArgumentException("Error al obtener datos" + ex.Message);
+                throw new ArgumentException("Error al obtener datos " + ex.Message);
             }
-        }
 
+        }//metodo bool
 
-    }
-}
+    }//clase logica empresa
+}//global

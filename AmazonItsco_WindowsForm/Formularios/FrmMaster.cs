@@ -16,5 +16,13 @@ namespace AmazonItsco_WindowsForm.Formularios
         {
             InitializeComponent();
         }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPersona frmPersona = new FrmPersona();
+            frmPersona.Show();
+
+
+        }
     }
 }

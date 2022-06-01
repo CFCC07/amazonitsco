@@ -443,7 +443,7 @@ namespace AmazonItsco_Data_ClassLibrary
 		
 		private char _usu_status;
 		
-		private System.DateTime _usu_add;
+		private System.Nullable<System.DateTime> _usu_add;
 		
 		private System.Nullable<System.DateTime> _usu_edit;
 		
@@ -454,6 +454,8 @@ namespace AmazonItsco_Data_ClassLibrary
 		private long _per_id;
 		
 		private string _per_dni;
+		
+		private System.Nullable<byte> _per_intentos;
 		
 		private EntityRef<Perfil> _Perfil;
 		
@@ -471,7 +473,7 @@ namespace AmazonItsco_Data_ClassLibrary
     partial void Onusu_claveChanged();
     partial void Onusu_statusChanging(char value);
     partial void Onusu_statusChanged();
-    partial void Onusu_addChanging(System.DateTime value);
+    partial void Onusu_addChanging(System.Nullable<System.DateTime> value);
     partial void Onusu_addChanged();
     partial void Onusu_editChanging(System.Nullable<System.DateTime> value);
     partial void Onusu_editChanged();
@@ -483,6 +485,8 @@ namespace AmazonItsco_Data_ClassLibrary
     partial void Onper_idChanged();
     partial void Onper_dniChanging(string value);
     partial void Onper_dniChanged();
+    partial void Onper_intentosChanging(System.Nullable<byte> value);
+    partial void Onper_intentosChanged();
     #endregion
 		
 		public Usuario()
@@ -572,8 +576,8 @@ namespace AmazonItsco_Data_ClassLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_add", DbType="DateTime NOT NULL")]
-		public System.DateTime usu_add
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_add", DbType="DateTime")]
+		public System.Nullable<System.DateTime> usu_add
 		{
 			get
 			{
@@ -700,6 +704,26 @@ namespace AmazonItsco_Data_ClassLibrary
 					this._per_dni = value;
 					this.SendPropertyChanged("per_dni");
 					this.Onper_dniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_intentos", DbType="TinyInt")]
+		public System.Nullable<byte> per_intentos
+		{
+			get
+			{
+				return this._per_intentos;
+			}
+			set
+			{
+				if ((this._per_intentos != value))
+				{
+					this.Onper_intentosChanging(value);
+					this.SendPropertyChanging();
+					this._per_intentos = value;
+					this.SendPropertyChanged("per_intentos");
+					this.Onper_intentosChanged();
 				}
 			}
 		}

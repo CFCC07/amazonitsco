@@ -93,7 +93,7 @@ namespace AmazonItsco_WindowsForm.Formularios
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(252, 177);
+            this.btnAceptar.Location = new System.Drawing.Point(251, 177);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 8;
@@ -117,6 +117,7 @@ namespace AmazonItsco_WindowsForm.Formularios
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogin";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,7 +49,7 @@ namespace AmazonItsco_WindowsForm.Formularios
 
                     if (intentos <=3)
                     {
-
+                        
                         usuario.per_intentos = (byte?)intentos;
                         bool resUsu = LogicaUsuario.updateIntentoUsuario(intentos);
                         MessageBox.Show("Correo o clave incorrectos. Ud ha realizado: \n" + intentos + " intentos fallidos", "Sistema Amazon Itsco", MessageBoxButtons.OK, MessageBoxIcon.Error);

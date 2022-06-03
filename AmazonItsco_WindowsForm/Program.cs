@@ -16,7 +16,7 @@ namespace AmazonItsco_WindowsForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.FrmLogin());
+            Application.Run(new Formularios.FrmListarPersonas());
         }
     }
 }

@@ -28,7 +28,7 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
 
 
 
-        public static Persona getAllPersonXId(int codigo)
+        public static Persona getAllPersonXId(int codigo) //para obtener persona con el label codigo (dato quemado)
         {
             try
             {
@@ -76,6 +76,43 @@ namespace AmazonItsco_Logica_ClassLibrary.Logica
                 throw new ArgumentException("Error al obtener Lista de personas x Apellido" + ex.Message);
             }
         }
+
+
+
+        public static List<Persona> getAllPersonXNombre(string nombre)
+        {
+            try
+            {
+                var resPer = dc.Persona.Where(data => data.per_status.Equals("A")
+                                                && data.per_nombres.StartsWith(nombre));
+                return resPer.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException("Error al obtener Lista de personas x nombre" + ex.Message);
+            }
+        }
+
+
+
+        public static List<Persona> getAllPersonXGenero(string genero)
+        {
+            try
+            {
+                var resPer = dc.Persona.Where(data => data.per_status.Equals("A")
+                                                && data.per_genero.Equals(genero));
+                return resPer.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException("Error al obtener Lista de personas x genero" + ex.Message);
+            }
+        }
+
+
+
 
         public static bool savePersona(Persona persona)
         {

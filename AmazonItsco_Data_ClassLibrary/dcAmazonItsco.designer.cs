@@ -193,6 +193,13 @@ namespace AmazonItsco_Data_ClassLibrary
 				return this.GetTable<TipoPago>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pcd_UpdateProduct")]
+		public ISingleResult<Pcd_UpdateProductResult> Pcd_UpdateProduct([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pro_id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string pro_codigo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string pro_nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(200)")] string pro_descripcion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(8,2)")] System.Nullable<decimal> pro_peso, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pro_preciocompra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> pro_precioventa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> pro_edit, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="SmallInt")] System.Nullable<short> cat_id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pro_id, pro_codigo, pro_nombre, pro_descripcion, pro_peso, pro_preciocompra, pro_precioventa, pro_edit, cat_id);
+			return ((ISingleResult<Pcd_UpdateProductResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categoria")]
@@ -4683,6 +4690,32 @@ namespace AmazonItsco_Data_ClassLibrary
 		{
 			this.SendPropertyChanging();
 			entity.TipoPago = null;
+		}
+	}
+	
+	public partial class Pcd_UpdateProductResult
+	{
+		
+		private int _Resultado;
+		
+		public Pcd_UpdateProductResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultado", DbType="Int NOT NULL")]
+		public int Resultado
+		{
+			get
+			{
+				return this._Resultado;
+			}
+			set
+			{
+				if ((this._Resultado != value))
+				{
+					this._Resultado = value;
+				}
+			}
 		}
 	}
 }

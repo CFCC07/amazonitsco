@@ -52,6 +52,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmInventario.Designer.cs">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmListaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmListaProducto.Designer.cs">
+      <DependentUpon>FrmListaProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmListarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,8 +94,20 @@
     <Compile Include="Formularios\FrmPersona.Designer.cs">
       <DependentUpon>FrmPersona.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProducto.Designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FrmInventario.resx">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmListaProducto.resx">
+      <DependentUpon>FrmListaProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmListarPersona.resx">
       <DependentUpon>FrmListarPersona.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmPersona.resx">
       <DependentUpon>FrmPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

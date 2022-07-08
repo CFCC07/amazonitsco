@@ -204,4 +204,18 @@
       <Association Name="TipoPago_Pago" Member="Pago" ThisKey="tpa_id" OtherKey="tpa_id" Type="Pago" />
     </Type>
   </Table>
+  <Function Name="dbo.Pcd_UpdateProduct" Method="Pcd_UpdateProduct">
+    <Parameter Name="pro_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pro_codigo" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="pro_nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="pro_descripcion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="pro_peso" Type="System.Decimal" DbType="Decimal(8,2)" />
+    <Parameter Name="pro_preciocompra" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pro_precioventa" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="pro_edit" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="cat_id" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="Pcd_UpdateProductResult">
+      <Column Name="Resultado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
